@@ -131,7 +131,8 @@ public class AlunoController {
         System.out.println("===============================");
 
         System.out.println("Aluno com id 5 no Map");
-        System.out.println(alunosMap.get(aluno5.getId()));
+        System.out.println(alunosMap.get(5));
+        //a chave é determinada no momento da criação da coleção
 
     }
 }
