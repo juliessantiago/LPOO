@@ -1,10 +1,10 @@
 package model;
 
 public class Aluno{
-    private int id = 1;
-    private int cpf = 123;
-    private int idade = 20;
-    private String nome = "Nome padrão";
+    private Integer id =34;
+    private Integer cpf = 123;
+    private Integer idade = 20;
+    private String nome = "Nome padrao";
     private String sobrenome = "Sobrenome padrao";
     private String email = "emailpadrao@gmail.com";
 
@@ -42,29 +42,29 @@ public class Aluno{
     }
 
     /*--------------Id--------------------*/
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     /*--------------CPF--------------------*/
-    public int getCpf() {
+    public Integer getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
 
     /*--------------Idade--------------------*/
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 

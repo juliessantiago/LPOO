@@ -1,8 +1,7 @@
 package controller;
 import model.Aluno;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AlunoController {
     public static void main(String[] args) {
@@ -18,12 +17,12 @@ public class AlunoController {
             System.out.println("===================================");
 
 
-    Aluno aluno3 = new Aluno(3, 785, 27, "Maria", "Silva", "mariasilva@gmail.com");
+    Aluno aluno3 = new Aluno(15, 785, 27, "Maria", "Silva", "mariasilva@gmail.com");
         System.out.println("Construtor parametrizado com todos atributos:");
         System.out.println(aluno3.toString());
         System.out.println("===================================");
 
-    Aluno aluno4  = new Aluno(4, 425, 35, "Jose", "Lopes", "joselopes@gmail.com");
+    Aluno aluno4  = new Aluno(14, 425, 35, "Jose", "Lopes", "joselopes@gmail.com");
         System.out.println("Construtor parametrizado com todos atributos:");
         System.out.println(aluno4.toString());
         System.out.println("===================================");
@@ -33,7 +32,7 @@ public class AlunoController {
         System.out.println(aluno5.toString());
         System.out.println("===================================");
 
-    Aluno aluno6 = new Aluno("Luísa", "Fernandes");
+    Aluno aluno6 = new Aluno("Luisa", "Fernandes");
         System.out.println("Construtor parametrizado com 2 atributos:");
         System.out.println(aluno6.toString());
         System.out.println("===================================");
@@ -72,6 +71,16 @@ public class AlunoController {
         System.out.println("===================================");
 
 
+        /*========Alterando IDs para poder ordenar as colecoes corretamente*/
+        aluno1.setId(1);
+        aluno2.setId(4);
+        aluno3.setId(5);
+        aluno4.setId(2);
+        aluno5.setId(8);
+        aluno6.setId(3);
+        aluno7.setId(6);
+        aluno8.setId(7);
+
         List<Aluno> alunos = new ArrayList<>();
         alunos.add(aluno1);
         alunos.add(aluno2);
@@ -81,7 +90,47 @@ public class AlunoController {
         alunos.add(aluno6);
         alunos.add(aluno7);
         alunos.add(aluno8);
+
+        System.out.println("========Colecoes - List==========");
+        System.out.println("Lista nao ordenada");
         System.out.println(alunos);
+        System.out.println("===================================");
+
+        alunos.sort(Comparator.comparing(Aluno::getId));
+        System.out.println("Lista ordenada");
+        System.out.println(alunos);
+        System.out.println("===================================");
+
+        alunos.sort(Comparator.comparing(Aluno::getId).reversed());
+        System.out.println("Lista em ordem descrescente");
+        System.out.println(alunos);
+        System.out.println("===================================");
+
+        Aluno resultado = alunos.stream().filter(a -> a.getId().equals(5)).findAny().orElse(null);
+        System.out.println("Valor pesquisado");
+        System.out.println(resultado);
+        System.out.println("===================================");
+
+
+
+        System.out.println("========Colecoes - Map==========");
+
+        Map<Integer, Aluno> alunosMap  = new HashMap<>();
+        alunosMap.put(aluno1.getId(), aluno1);
+        alunosMap.put(aluno2.getId(), aluno2);
+        alunosMap.put(aluno3.getId(), aluno3);
+        alunosMap.put(aluno4.getId(), aluno4);
+        alunosMap.put(aluno5.getId(), aluno5);
+        alunosMap.put(aluno6.getId(), aluno6);
+        alunosMap.put(aluno7.getId(), aluno7);
+        alunosMap.put(aluno8.getId(), aluno8);
+        System.out.println(alunosMap);
+
+        System.out.println("===============================");
+        System.out.println("Nao e possivel fazer ordenacao em Map");
+
+
+
     }
 }
 
