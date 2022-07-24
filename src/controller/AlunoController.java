@@ -73,13 +73,13 @@ public class AlunoController {
 
         /*========Alterando IDs para poder ordenar as colecoes corretamente*/
         aluno1.setId(1);
-        aluno2.setId(4);
-        aluno3.setId(5);
-        aluno4.setId(2);
-        aluno5.setId(8);
-        aluno6.setId(3);
-        aluno7.setId(6);
-        aluno8.setId(7);
+        aluno2.setId(2);
+        aluno3.setId(3);
+        aluno4.setId(4);
+        aluno5.setId(5);
+        aluno6.setId(6);
+        aluno7.setId(7);
+        aluno8.setId(8);
 
         List<Aluno> alunos = new ArrayList<>();
         alunos.add(aluno1);
@@ -92,7 +92,7 @@ public class AlunoController {
         alunos.add(aluno8);
 
         System.out.println("========Colecoes - List==========");
-        System.out.println("Lista nao ordenada");
+        System.out.println("Lista");
         System.out.println(alunos);
         System.out.println("===================================");
 
@@ -107,7 +107,7 @@ public class AlunoController {
         System.out.println("===================================");
 
         Aluno resultado = alunos.stream().filter(a -> a.getId().equals(5)).findAny().orElse(null);
-        System.out.println("Valor pesquisado");
+        System.out.println("Aluno com id 5 no List");
         System.out.println(resultado);
         System.out.println("===================================");
 
@@ -128,8 +128,10 @@ public class AlunoController {
 
         System.out.println("===============================");
         System.out.println("Nao e possivel fazer ordenacao em Map");
+        System.out.println("===============================");
 
-
+        System.out.println("Aluno com id 5 no Map");
+        System.out.println(alunosMap.get(aluno5.getId()));
 
     }
 }
