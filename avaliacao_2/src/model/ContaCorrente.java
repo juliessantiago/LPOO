@@ -1,12 +1,17 @@
 package model;
 
 public class ContaCorrente extends Conta implements AssociadoVip{
+
+    private int qntdCotas;
     @Override
-    public String toString() {
-        return "\nContaCorrente{" +
-                "saldo=" + saldo +
-                '}';
+    public Integer getQntdCotas(){
+        return  qntdCotas;
     }
+    @Override
+    public void setQntdCotas(Integer qntdCotas){
+        this.qntdCotas = qntdCotas;
+    }
+
     @Override
     //no caso da conta corrente, é possível deixar um saldo negativo
     //esse comportamento vai sobrescrever o de Conta
@@ -22,12 +27,15 @@ public class ContaCorrente extends Conta implements AssociadoVip{
     }
 
     @Override
-    //implementando o comportamento
+    //implementando por obrigação o comportamento lucros
     public double lucros(int qntdCotas, double valorCota){
-        return (valorCota * qntdCotas) + this.saldo;
+        return (valorCota * qntdCotas);
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "\nContaCorrente{" +
+                "qntdCotas=" + qntdCotas + " Saldo: " + saldo +
+                '}';
+    }
 }

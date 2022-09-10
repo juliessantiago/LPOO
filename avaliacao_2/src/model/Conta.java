@@ -3,9 +3,12 @@ package model;
 public abstract class Conta {
     //abstract: não serão criadas instâncias de objetos diretamente de Conta
     protected double saldo;
-
     public double getSaldo() {
         return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public void deposita(double valor){
