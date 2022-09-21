@@ -1,0 +1,48 @@
+Algumas considerações sobre as regras de negócio que implementei 
+
+Produto 
+
+-> Um produto só é fornecido por um fornecedor, mas um fornecedor pode fornecer mais de um produto
+
+-> preco (em Produto) foi renomeado para precoCusto. Considerei que seria um preço tabelado, que não se 
+altera. 
+
+-> Criei um novo atributo chamado precoVenda. É calculado pelo precoCusto x porcentagem de 10%. 
+
+
+Fornecimento 
+
+-> Considerei que não seria correto criar as instâncias de Produto e Fornecedor e depois alterar os 
+valores de estoque e valor total do fornecimento. Não sei como outros colegas fizeram, mas no momento 
+em que crio o fornecimento usando um construtor parametrizado, já faço as ligações entre produto e 
+fornecedor, altero o estoque e calculo o valor total desse fornecimento. 
+
+
+Item
+
+-> No meu entendimento, faz mais sentido cada pedido ter uma LISTA de itens
+
+Cálculo de pedido: soma dos itens
+Cálculo do total de cada item: quantidade de cada produto * valor de venda
+item 1 -> 15 unidades do produto 1 (27,50) = 412,50
+item 2 -> 3 unidades do produto 2 (8,25) = 24,75
+
+Total do pedido 1: R$ 437,25
+
+item 3 -> 10 unidades do produto 3 (8,80) = 88,00
+item 4 -> 20 unidades do produto 4 (3,85) = 77,00
+
+Total do pedido 2: R$ 165,00
+
+*Estoque antes das vendas*
+
+Produto 1 = 30 unidades
+Produto 2 = 5 undiades
+Produto 3 = 20 unidades
+Produto 4 = 20 unidades
+
+*Estoque após vendas*
+Produto 1 = 15 unidades
+Produto 2 = 2 undiades
+Produto 3 = 10 unidades
+Produto 4 = 0 unidades
