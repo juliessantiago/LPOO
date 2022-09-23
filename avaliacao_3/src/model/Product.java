@@ -10,9 +10,11 @@ public class Product { //Produto, representação do estoque
     //precoCusto representa o valor a ser pago ao fornecedor por unidade
     //na prática, considero que o mais correto é o precoCusto vir no Fornecimento
     private double precoCusto; //Renomeação
-    private double precoVenda; //Alteração na modelagem
+    private double precoVenda; //Alteração
 
-    private int qntdComprada; //Alteração na modelagem
+    private int qntdComprada; //Alteração
+
+    private boolean stockChangeError;
 
     Dealer dealer;
 
@@ -41,6 +43,10 @@ public class Product { //Produto, representação do estoque
         return qntdEstoque;
     }
 
+    public boolean stockChangeError() {
+        return stockChangeError;
+    }
+
     public void increaseStock(int qntdComprada) {
         this.qntdEstoque = qntdEstoque + qntdComprada;
 
@@ -52,7 +58,8 @@ public class Product { //Produto, representação do estoque
             this.qntdEstoque = qntdEstoque - qntdVendida;
             System.out.println("Feita retirada no estoque!");
         }else{
-            System.out.println("\nQuantidade insuficiente em estoque");
+            this.stockChangeError = true;
+           // System.out.println("\nQuantidade insuficiente em estoque");
         }
 
 

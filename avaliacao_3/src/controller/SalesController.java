@@ -52,12 +52,17 @@ public class SalesController {
         Seller seller1 = new Seller(1, "João da Silva", "Praça 7 de Setembro", "Fragata", "96015-300", "Pelotas", "Rio Grande do Sul", "local1");
         Seller seller2 = new Seller(2, "Juliana Almeida", "General Osório", "Centro", "96020-000", "Pelotas", "Rio Grande do Sul", "local2");
 
-
         Item item1 = new Item(1, 15, product1);
         Item item2 = new Item(2, 3, product2);
 
         Item item3 = new Item(2, 10, product3);
         Item item4 = new Item(2, 20, product4);
+
+        //Tentativa de alteração no estoque utilizada para tratamento de exceção
+        Item item5 = new Item(1, 50, product1);
+        if(product1.stockChangeError()){
+            verify();
+        }
 
         List<Item> itensA = new ArrayList<>();
         itensA.add(item1);
@@ -72,6 +77,7 @@ public class SalesController {
 
         Order order1 = new Order(1, new GregorianCalendar(2022, Calendar.OCTOBER, 15), seller1, itensA);
         Order order2 = new Order(2,new GregorianCalendar(2022, Calendar.OCTOBER, 15), seller2, itensB);
+
 
 
         System.out.println("------------------Relatório de vendas-------------------");
@@ -89,4 +95,25 @@ public class SalesController {
         System.out.println(product4.getNome() + " quantidade " + product4.getStock());
 
     }
+    private static void verify() {
+        mythrowException();
+    }
+
+    private static void mythrowException(){
+        try {
+            System.out.println("\nOperação não realizada. Estoque do produto é insuficiente.");
+            throw new InsufficientStockException();
+        } catch (InsufficientStockException e) {
+            e.printStackTrace();
+        } finally {
+            System.err.println("\nClasse de exceção finalizada");
+        }
+    }
+
+    static class InsufficientStockException  extends Exception {
+        public InsufficientStockException () {
+            super("\nOperação não realizada. Estoque do produto é insuficiente.");
+        }
+    }
+
 }
